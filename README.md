@@ -58,7 +58,7 @@ git clone https://github.com/ByteXenon/GPTCodeEnhance.git
 ```
 2. Navigate to the directory of the extension:
 ```
-cd gptcodeenhance
+cd GPTCodeEnhance
 ```
 3. Download the necessary modules and build the extension using the following commands:
 ```
