@@ -1,0 +1,85 @@
+{
+  "name": "gpt-code-enhance",
+  "repository": {
+    "url": "https://github.com/ByteXenon/ByteXenon"
+  },
+  "icon": "resources/icon.png",
+  "displayName": "GPT Code Enhance",
+  "description": "",
+  "version": "1.0.1",
+  "publisher": "ByteXenon",
+  "main": "./extension.js",
+  "engines": {
+    "vscode": "^1.0.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+  ],
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.refactorCode",
+        "title": "[GPT Enhance] Refactor Code"
+      },
+      {
+        "command": "extension.improveCode",
+        "title": "[GPT Enhance] Improve Code"
+      },
+      {
+        "command": "extension.modularizeCode",
+        "title": "[GPT Enhance] Modularize Code"
+      },
+      {
+        "command": "extension.documentCode",
+        "title": "[GPT Enhance] Document Code"
+      },
+      {
+        "command": "extension.improveDesignPatterns",
+        "title": "[GPT Enhance] Improve Design Patterns"
+      },
+      {
+        "command": "extension.enhanceCodeFromComments",
+        "title": "[GPT Enhance] Enhance with tag"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.refactorCode",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.improveCode",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.modularizeCode",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.documentCode",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.enhanceCodeFromComments",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        },
+        {
+          "command": "extension.improveDesignPatterns",
+          "group": "3_modification",
+          "when": "editorHasSelection"
+        }
+      ]
+    }
+  }
+}
