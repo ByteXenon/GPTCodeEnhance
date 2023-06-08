@@ -38,34 +38,36 @@ async function generateMessage(prompt) {
  */
 async function retryGenerateMessage(prompt) {
   const maxRetries = 3;
-  const tripleBackticksRegex = /^\s*```[\s\S]*```\s*$/;
-  const removeTripleBackticksRegex = /^\s*```|```\s*$/g;
+  const tripleBackticksRegex = /```([\s\S]*?)```/;
 
+  // Escape triple backticks in the prompt
+  const escapedPrompt = prompt.replace(/```/g, '\\`\\`\\`');
+  
   let retryCount = 0;
-
   while (retryCount++ < maxRetries) {
     try {
-      let message = await generateMessage(prompt);
-      if (tripleBackticksRegex.test(message)) {
-        message = message.replace(removeTripleBackticksRegex, '');
-      }
-      
-      return message
+      let message = await generateMessage(escapedPrompt);
+      const match = tripleBackticksRegex.exec(message);
+
+      if (match) {
+        message = match[1];
+      } 
+
+      message = message.replace(/\\`\\`\\`/g, '```');
+      return message;
     } catch (error) {
       console.error(`Failed to generate message: ${error}`);
+      vscode.window.showErrorMessage('Bad message, retrying...');
     }
-    vscode.window.showErrorMessage('Bad message, retrying...');
   }
-  
   return null;
 }
 
 /**
- * Function that generates a message using the ChatGPT API with a prompt that includes the selected code.
- * @async
- * @param {string} selectedCode - The selected code to include in the prompt.
- * @param {string} prompt - The prompt to use for generating the message, with "{selectedCode}" as a placeholder for the code.
- * @returns {string|null} The generated message, or null if all attempts fail.
+ * Generates a message with a prompt and selected code
+ * @param {string} selectedCode - The selected code to be inserted into the prompt.
+ * @param {string} prompt - The prompt to be used for generating the message.
+ * @returns {string|null} - The generated message, or null if all attempts fail.
  */
 async function generateMessageWithPrompt(selectedCode, prompt) {
   const promptWithCode = prompt.replace("{selectedCode}", selectedCode);
@@ -81,5 +83,5 @@ module.exports = {
   enhanceCodeFromComments: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.enhanceCodeFromComments),
   modularizeCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.modularizeCode),
   improveDesignPatterns: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.improveDesignPatterns),
-  documentCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.documentCode),
+  documentCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.documentCode)
 };
