@@ -2,7 +2,7 @@
 
 The GPT Code Enhance extension for **[Visual Studio Code](https://code.visualstudio.com/)** empowers developers to effortlessly enhance their codebase using the power of **[ChatGPT](https://chat.openai.com)**, a state-of-the-art language model developed by OpenAI. This extension seamlessly integrates with Visual Studio Code, providing a wide range of features to refactor, optimize, modularize, improve design patterns, and document code with ease, **all for free with no strings attached**.
 
-![PreviewVSCodeGPT](https://github.com/ByteXenon/GPTCodeEnhance/assets/125568681/c2f79aff-7ddc-414e-a769-229c011e6029)
+![PreviewVSCodeGPT2](https://github.com/ByteXenon/GPTCodeEnhance/assets/125568681/a347c36e-2088-45bf-b343-0d65816a7799)
 
 
 ## Features ✨
@@ -49,6 +49,20 @@ Before you can use the GPT Code Enhance extension, ensure you have the following
 3. Search for "GPT Code Enhance" in the search bar.
 4. Click the "Install" button next to the extension.
 5. Once installed, you can start using the extension right away.
+
+### Installation from GitHub Releases
+
+If you prefer to install the GPT Code Enhance extension from GitHub releases, follow these steps:
+
+1. Visit the **[GitHub repository](https://github.com/ByteXenon/GPTCodeEnhance)** of the extension.
+2. Go to the **[Releases](https://github.com/ByteXenon/GPTCodeEnhance/releases)** section.
+3. Download the latest release package (`gpt-code-enhance-x.x.x.vsix`) from the assets.
+4. Open **Visual Studio Code**.
+5. Go to the **Extensions** view (Ctrl+Shift+X).
+6. Click on the **...** (More Actions) button and choose **Install from VSIX**.
+7. Select the downloaded VSIX file and click **Open**.
+8. Once installed, you can start using the extension right away.
+
 
 ### Compiling from Source
 

@@ -6,7 +6,7 @@
  *  - enhanceCodeFromComments: improves the code based on comments that start with the "ChatGPT:" tag.
  *  - modularizeCode: modularizes the code by splitting it into smaller, more manageable modules
  *  - improveDesignPatterns: improves the code by applying a set of predefined design patterns
- *  - documentCode: documents the code by generating JSDoc comments for the functions and classes
+ *  - documentCode: documents the code by generating comments for the functions and classes
  *
  */
 
@@ -30,15 +30,28 @@ async function handleCodeCommand(editor, commandType) {
     document: documentCode
   };
   
-  const refactoredCode = availableCommands[commandType] && await availableCommands[commandType](selectedCode);
+  // Check if the commandType is valid
+  if (!availableCommands[commandType]) {
+    vscode.window.showErrorMessage(`Invalid command type: ${commandType}`);
+    return;
+  }
   
-  // Replaces the selected code with the refactored or improved code
+  // Call the appropriate function based on the commandType
+  const refactoredCode = await availableCommands[commandType](selectedCode);
+  
+  // Replace the selected code with the refactored code
   if (refactoredCode) {
     editor.edit((editBuilder) => {
       editBuilder.replace(editor.selection, refactoredCode);
     });
-  } else {
-    vscode.window.showErrorMessage(selectedCode ? `Failed to ${commandType} code.` : 'No code selected.');
+  } 
+  // Show error messages if there is no code selected or if the code fails to be refactored
+  else {
+    if (selectedCode) {
+      vscode.window.showErrorMessage(`Failed to ${commandType} code.`);
+    } else {
+      vscode.window.showErrorMessage('No code selected.');
+    }
   }
 }
 
@@ -54,7 +67,7 @@ function activate(context) {
     vscode.commands.registerTextEditorCommand('extension.modularizeCode', (editor) => handleCodeCommand(editor, 'modularize')),
     vscode.commands.registerTextEditorCommand('extension.documentCode', (editor) => handleCodeCommand(editor, 'document')),
     vscode.commands.registerTextEditorCommand('extension.enhanceCodeFromComments', (editor) => handleCodeCommand(editor, 'enhanceFromComments')),
-    vscode.commands.registerTextEditorCommand('extension.improveDesignPatterns', (editor) => handleCodeCommand(editor, 'improveDesignPatterns')),
+    vscode.commands.registerTextEditorCommand('extension.improveDesignPatterns', (editor) => handleCodeCommand(editor, 'improveDesignPatterns'))
   );
 }
 

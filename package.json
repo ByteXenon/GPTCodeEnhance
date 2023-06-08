@@ -1,19 +1,42 @@
 {
   "name": "gpt-code-enhance",
   "repository": {
-    "url": "https://github.com/ByteXenon/ByteXenon"
+    "type": "git",
+    "url": "https://github.com/ByteXenon/GPTCodeEnhance"
   },
   "icon": "resources/icon.png",
   "displayName": "GPT Code Enhance",
-  "description": "",
-  "version": "1.0.1",
+  "description": "A free VSCode extension to boost your productivity",
+  "version": "1.0.2",
   "publisher": "ByteXenon",
   "main": "./extension.js",
   "engines": {
-    "vscode": "^1.0.0"
+    "vscode": ">=1.60.0"
   },
   "categories": [
-    "Other"
+    "Formatters",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "code refactoring",
+    "code optimization",
+    "code improvement",
+    "code documentation",
+    "source code",
+    "programming",
+    "coding",
+    "software development",
+    "developer tools",
+    "code quality",
+    "code review",
+    "code analysis",
+    "coding standards",
+    "best practices",
+    "API integration",
+    "chatbot",
+    "GPT",
+    "OpenAI",
+    "ChatGPT"
   ],
   "activationEvents": [
   ],
@@ -21,6 +44,20 @@
     "axios": "^1.4.0"
   },
   "contributes": {
+    "extensionResources": [
+      {
+        "title": "Documentation",
+        "url": "https://github.com/ByteXenon/GPTCodeEnhance/wiki"
+      },
+      {
+        "title": "Issue Tracker",
+        "url": "https://github.com/ByteXenon/GPTCodeEnhance/issues"
+      },
+      {
+        "title": "Changelog",
+        "url": "https://github.com/ByteXenon/GPTCodeEnhance/blob/main/CHANGELOG.md"
+      }
+    ],
     "commands": [
       {
         "command": "extension.refactorCode",
@@ -81,5 +118,10 @@
         }
       ]
     }
+  },
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ByteXenon/GPTCodeEnhance/issues",
+    "email": "danielgtdavis@proton.me"
   }
 }
