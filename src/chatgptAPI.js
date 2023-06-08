@@ -4,6 +4,7 @@
  */
 
 const axios = require('axios');
+const vscode = require('vscode');
 const prompts = require('../data/prompts.json');
 
 /**
@@ -30,23 +31,32 @@ async function generateMessage(prompt) {
 }
 
 /**
- * Function that retries generating a message up to 5 times in case of failure.
+ * Function that retries generating a message up to 3 times in case of failure.
  * @async
  * @param {string} prompt - The prompt to use for generating the message.
  * @returns {string|null} The generated message, or null if all attempts fail.
  */
 async function retryGenerateMessage(prompt) {
-  for (let i = 0; i < 5; i++) {
+  const maxRetries = 3;
+  const tripleBackticksRegex = /^\s*```[\s\S]*```\s*$/;
+  const removeTripleBackticksRegex = /^\s*```|```\s*$/g;
+
+  let retryCount = 0;
+
+  while (retryCount++ < maxRetries) {
     try {
-      const message = await generateMessage(prompt);
-      if (!/^```|```$/.test(message)) {
-        return message.replace(/^```|```$/g, '');
+      let message = await generateMessage(prompt);
+      if (tripleBackticksRegex.test(message)) {
+        message = message.replace(removeTripleBackticksRegex, '');
       }
+      
+      return message
     } catch (error) {
       console.error(`Failed to generate message: ${error}`);
     }
-    console.log('Bad message, retrying...');
+    vscode.window.showErrorMessage('Bad message, retrying...');
   }
+  
   return null;
 }
 
@@ -71,5 +81,5 @@ module.exports = {
   enhanceCodeFromComments: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.enhanceCodeFromComments),
   modularizeCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.modularizeCode),
   improveDesignPatterns: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.improveDesignPatterns),
-  documentCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.documentCode)
+  documentCode: (selectedCode) => generateMessageWithPrompt(selectedCode, prompts.documentCode),
 };
