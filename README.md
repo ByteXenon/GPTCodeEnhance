@@ -5,6 +5,21 @@ The GPT Code Enhance extension for **[Visual Studio Code](https://code.visualstu
 ![PreviewVSCodeGPT2](https://github.com/ByteXenon/GPTCodeEnhance/assets/125568681/a347c36e-2088-45bf-b343-0d65816a7799)
 
 
+## Table of Contents:
+- **[Features](#features-)**
+- **[Getting Started](#getting-started-)**
+  - **[Prerequisites](#prerequisites)**
+  - **[Installation from VSCode Marketplace](#installation-from-vscode-marketplace)**
+  - **[Installation from GitHub Releases](#installation-from-github-releases)**
+  - **[Compiling from Source](#compiling-from-source)**
+- **[TODO](#todo-)**
+- **[Known Issues](#known-issues)**
+- **[Contribution](#contribution)**
+- **[Similar Projects](#similar-projects)**
+- **[Project Status](#project-status)**
+- **[Privacy](#privacy-)**
+- **[License](#license)**
+
 ## Features ✨
 
 - **Refactor Code**: Command: `refactorCode`
@@ -42,7 +57,7 @@ Before you can use the GPT Code Enhance extension, ensure you have the following
 - **[Visual Studio Code](https://code.visualstudio.com/)** installed on your machine.
 - An active internet connection to download and use the extension.
 
-### Installation
+### Installation from VSCode Marketplace
 
 1. Open **[Visual Studio Code](https://code.visualstudio.com/)**.
 2. Go to the Extensions view (Ctrl+Shift+X).
