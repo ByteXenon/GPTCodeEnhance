@@ -2,8 +2,7 @@
 
 The GPT Code Enhance extension for **[Visual Studio Code](https://code.visualstudio.com/)** empowers developers to effortlessly enhance their codebase using the power of **[ChatGPT](https://chat.openai.com)**, a state-of-the-art language model developed by OpenAI. This extension seamlessly integrates with Visual Studio Code, providing a wide range of features to refactor, optimize, modularize, improve design patterns, and document code with ease, **all for free with no strings attached**.
 
-![PreviewVSCodeGPT2](https://github.com/ByteXenon/GPTCodeEnhance/assets/125568681/a347c36e-2088-45bf-b343-0d65816a7799)
-
+![image](https://github.com/ByteXenon/GPTCodeEnhance/assets/125568681/8a2065af-107f-4a59-93c6-b236a06e961b)
 
 ## Table of Contents:
 - **[Features](#features-)**
